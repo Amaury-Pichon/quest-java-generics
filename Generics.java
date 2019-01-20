@@ -1,3 +1,4 @@
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -22,15 +23,15 @@ public class Generics {
     List<String>  strs = Arrays.asList("tout", "titi", "ototo", "jean", "tous", "taratata");
 
     // TODO - Ne retourner que les nombres pairs.
-    ints = filter(ints, i -> true);
+    ints = filter(ints, i -> i%2 == 0);
     // TODO - Multiplier par 2 chaque élément de la liste.
-    ints = map(ints, i -> i);
+    ints = map(ints, i -> 2 * i);
     for (Integer i: ints) System.out.println(i);
 
     // TODO - Ne retourner que les Strings contenant au moins 2 lettres t.
-    //strs = ...
+    strs = filter(strs, i -> i.matches("(?=.{2,}[t]).*"));
     // TODO - Passer en majuscule toutes les Strings
-    //strs = ...
+    strs = map(strs, i -> i.toUpperCase());
     for (String s: strs) System.out.println(s);
   }
 
@@ -44,6 +45,12 @@ public class Generics {
   private <T> List<T> filter(Collection<T> c, Predicate<T> p) {
     List<T> result = new ArrayList<>();
     // TODO - Ajouter le code ici
+
+    for(T obj : c){
+      if(p.filter(obj))
+        result.add(obj);
+    }
+
     // Retourner 'result' contenant les éléments de Collection filtrés par la méthode o.filter().
     return result;
   }
@@ -59,6 +66,9 @@ public class Generics {
   private <T, U> List<U> map(Collection<T> c, Mapper<T, U> m) {
     List<U> result = new ArrayList<>();
     // TODO - Ajouter le code ici
+    for(T obj : c){
+      result.add(m.map(obj));
+    }
     // Retourner 'result' contenant les éléments de la Collection modifiés par la méthode m.map().
     return result;
   }
