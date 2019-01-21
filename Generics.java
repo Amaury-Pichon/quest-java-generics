@@ -1,13 +1,8 @@
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.List;
 
 public class Generics {
-  interface Predicate<T> { boolean filter(T obj); }
-  interface Mapper<T, U> { U map(T obj); }
-
   /**
    * Java entry point
    */
